@@ -1,0 +1,94 @@
+# 4.1
+guess_me = 7
+
+if guess_me < 7:
+    print('too low')
+elif guess_me > 7:
+    print('too high')
+else:
+    print('just right')
+
+# 4.2
+guess_me = 7
+start = 1
+while True:
+    if guess_me > start:
+        print('too low')
+    elif guess_me < start:
+        print('oops')
+        break
+    elif guess_me == start:
+        print('found it!')
+        break
+
+    start += 1
+
+# 4.3
+list1 = [3, 2, 1, 0]
+for value in list1:
+    print(value)
+
+# 4.4
+even = [number for number in range(10) if number % 2 == 0]
+print(even)
+
+# 4.5
+squares = {key: key*key for key in range(10)}
+print(squares)
+
+# 4.6
+odd = {num for num in range(10) if num % 2 == 1}
+print(odd)
+
+# 4.7
+for response in ('Got %s ' % number for number in range(10)):
+    print(response)
+
+# 4.8
+def good():
+    return ['Harry', 'Ron', 'Hermione']
+
+print(good())
+
+# 4.9
+def get_odds():
+    for odd in range(1, 10, 2):
+        yield odd
+
+# enumerate 用途為遍歷各個串列等等
+for index, num in enumerate(get_odds(), 1):
+    if index == 3:
+        print(num)
+        break
+
+# 4.10 裝飾器
+def test(func):
+    def new_function(*args, **kwargs):
+        print('start')
+        result = func(*args, **kwargs)
+        print('end')
+
+        return result
+    return new_function
+
+@test
+def hello():
+    print('Hello')
+
+print(hello())
+
+# 4.11 exception
+class OopsException(Exception):
+    pass
+
+try:
+    raise OopsException
+except OopsException:
+    print('Caught an oops')
+
+# 4.12
+# zip() 將可迭代的對象作為參數，將其對應打包成一個個數組，然後返回列表
+titles = ['Creature of Habit', 'Crewel Fate']
+plots = ['A nun turns into a monster', 'A haunted yarn shop']
+movies = dict(zip(titles, plots))
+print(movies)
